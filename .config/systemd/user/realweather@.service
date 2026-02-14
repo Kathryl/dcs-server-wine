@@ -1,0 +1,16 @@
+[Unit]
+Description=RealWeather
+Documentation=
+
+AssertFileNotEmpty=%h/.wine/drive_c/DCS_configs/DCS.%i/RealWeather/config.toml
+AssertFileNotEmpty=%h/bin/realweather
+
+Before=dcs-server@%i.service
+
+[Install]
+WantedBy=default.target
+
+[Service]
+WorkingDirectory=%h/.wine/drive_c/DCS_configs/DCS.%i/RealWeather/
+Type=oneshot
+ExecStart=%h/bin/realweather
