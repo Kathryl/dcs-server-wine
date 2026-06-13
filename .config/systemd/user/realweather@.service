@@ -13,4 +13,4 @@ WantedBy=default.target
 [Service]
 WorkingDirectory=%h/.wine/drive_c/DCS_configs/DCS.%i/RealWeather/
 Type=oneshot
-ExecStart=%h/bin/realweather
+ExecStart=/bin/bash -c "%h/bin/realweather -input \"%h/.wine/drive_c/DCS_configs/DCS.%i/Missions/$$(grep miz \"%h/.wine/drive_c/DCS_configs/DCS.%i/Config/serverSettings.lua\" | sort -n | head -n1 | awk -F'\\\\' '{print $$NF}' | sed -E 's/_realweather\\.miz\"/.miz/g')\" -output \"%h/.wine/drive_c/DCS_configs/DCS.%i/Missions/$$(grep miz \"%h/.wine/drive_c/DCS_configs/DCS.%i/Config/serverSettings.lua\" | sort -n | head -n1 | awk -F'\\\\' '{print $$NF}' | sed -E 's/(_realweather)?\\.miz\"/_realweather.miz/g')\""
